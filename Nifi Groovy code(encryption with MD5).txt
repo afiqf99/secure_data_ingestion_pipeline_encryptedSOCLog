@@ -1,0 +1,26 @@
+//Nifi Groovy at ExecuteGroovyScript processor
+
+import org.apache.commons.codec.digest.DigestUtils
+import org.apache.nifi.processor.io.StreamCallback
+
+def flowFile = session.get()
+if (!flowFile) return
+
+flowFile = session.write(flowFile, { inputStream, outputStream ->
+    def originalData = inputStream.bytes
+
+    // Use a 16-byte encryption key
+    def encryptionKey = 'mysecretkey23154'.bytes
+    def cipher = javax.crypto.Cipher.getInstance('AES')
+    def secretKey = new javax.crypto.spec.SecretKeySpec(encryptionKey, 'AES')
+    cipher.init(javax.crypto.Cipher.ENCRYPT_MODE, secretKey)
+
+    // Encrypt the data
+    def encryptedData = cipher.doFinal(originalData)
+    outputStream.write("Encrypted Data: ".bytes)
+    outputStream.write(encryptedData)
+    outputStream.write("\nMD5 Hash: ".bytes)
+    outputStream.write(DigestUtils.md5Hex(originalData).bytes)
+} as StreamCallback)
+
+session.transfer(flowFile, REL_SUCCESS)

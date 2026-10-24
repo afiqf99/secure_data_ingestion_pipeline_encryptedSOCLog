@@ -1,0 +1,17 @@
+# Network Log - Confidential
+# Date: 2024-11-05
+# Generated for internal use only. Do not disturb.
+
+# Timestamp           Source IP           Destination IP      Protocol     Action      Details
+2024-11-05T10:45:12   192.168.1.10        203.0.113.5         HTTP         ALLOWED     User login to internal portal (ID: abc123)
+2024-11-05T10:46:23   192.168.1.12        198.51.100.22       HTTPS        BLOCKED     Unauthorized attempt to access restricted site
+2024-11-05T10:47:34   10.0.0.15           192.168.1.1         SSH          ALLOWED     Admin access (User: jdoe, ID: xyz789)
+2024-11-05T10:49:01   192.168.1.8         203.0.113.22        FTP          BLOCKED     Suspicious FTP upload attempt flagged
+2024-11-05T10:52:17   172.16.0.23         192.168.1.2         DNS          ALLOWED     DNS query for internal domain
+2024-11-05T10:53:44   192.168.1.3         10.0.0.8            ICMP         ALLOWED     Ping request received and acknowledged
+2024-11-05T10:55:21   192.168.1.20        192.168.1.15        SMB          BLOCKED     Unauthorized file access attempt
+2024-11-05T10:57:09   10.0.0.45           203.0.113.77        HTTP         ALLOWED     Data request sent to external server (ID: req567)
+2024-11-05T10:58:53   192.168.1.7         198.51.100.200      HTTPS        BLOCKED     Suspicious login attempt to secure portal
+2024-11-05T11:00:12   192.168.1.11        203.0.113.15        RDP          ALLOWED     Remote access session started by authorized user
+
+# End of Log
